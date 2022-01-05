@@ -1,0 +1,9 @@
+Part 1:
+Winning_board: 12 (Index: 11 )
+Final Score Is: 6592
+
+
+Part 2:
+ast winning_board: 40 (Index: 39 )
+Sum not called values: 365
+Final Score Is: 31755

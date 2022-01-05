@@ -1,6 +1,6 @@
 import numpy as np
 
-filepath = "04_02_Data.txt"
+filepath = "04_01_Data.txt"
 #
 with open(filepath) as f:
     file_list = f.readlines()
@@ -99,15 +99,15 @@ def check_for_match():
             for (b, row) in enumerate(board[0: None]):
 
                 for (c, element) in enumerate(row[0: None]):
-                    
+
                     # Allocate '1' value on binary scoreboard for the matched position / board:
                     if element == called_number:
                         # print("Match found at:", a, b, c, "for called number:", called_number)
                         np_all_positions[a][b][c] = 1
-                        
+
 
                         # Now check binary scoreboard for any winning boards by checking full rows and full columns in each board.
-                        
+
                         # Encapsulate both row and columns checks in a master for loop length of all boards in bineary scoreboard:
                         for p in range(len(np_all_positions)):
 
@@ -126,7 +126,7 @@ def check_for_match():
                                     if len(win_list) == allboards_length:
                                         # print("win_list length contains all boards and is:", len(win_list))
                                         return ()
-                                 
+
                                 #As p has been updated - re assert only to proceed for boards that have not yet won.
                                 if p not in win_list:
 
@@ -144,7 +144,7 @@ def check_for_match():
                                             # print("win_list length contains all boards and is ", len(win_list))
                                             return ()
 
- 
+
 check_for_match()
 
 
