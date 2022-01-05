@@ -1,0 +1,10 @@
+01_01:
+Gamma: 779
+Epsilon: 3316
+Power Consuption: 2583164
+
+01_02
+Oxygen Rating X C02 Scrubber Rating: 2784375
+
+
+
