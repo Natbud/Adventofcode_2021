@@ -9,6 +9,7 @@ with open(filepath, 'r') as f:
 fish_list = [line.split(",") for line in file_list]
 # alter to alist of interger types rather than strings:
 fish_list = [int(i) for i in fish_list[0][0:None]]
+print("Start Fish_list:", fish_list)
 
 # np_fish_list = np.array(fish_list)
 # fish_dict = {fish_list[0][i]: fish_list[0][i+1] for i in range(0, len(fish_list), 2)}
@@ -19,15 +20,12 @@ fish_list = [int(i) for i in fish_list[0][0:None]]
 #     res_dct = dict(zip(it, it))
 #     return res_dct
 
-# convert list to dictionary - seems to just be a 'set' no duplicates....
-fish_dict = {fish for fish in fish_list}
+# # TRYING DICTIONARY APPROACH - NOT WORKING.
+# fish_dict = {fish for fish in fish_list}
+# print("fish_dict:", fish_dict)
+# for fish in fish_dict:
+#     print(fish)
 
-print("fish_dict:", fish_dict)
-
-for fish in fish_dict:
-    print(fish)
-
-exit()
 
 
 
