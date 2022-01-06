@@ -13,19 +13,25 @@ fish_list = [int(i) for i in fish_list[0][0:None]]
 # np_fish_list = np.array(fish_list)
 # fish_dict = {fish_list[0][i]: fish_list[0][i+1] for i in range(0, len(fish_list), 2)}
 
-#function to convert list to dictionary
-def Convert(a):
-    it = iter(a)
-    res_dct = dict(zip(it, it))
-    return res_dct
+#function to convert list to dictionary - NOT WORKING! only writes one value.
+# def Convert(a):
+#     it = iter(a)
+#     res_dct = dict(zip(it, it))
+#     return res_dct
 
-# convert list to dictionary
-fish_dict = (Convert(fish_list))
+# convert list to dictionary - seems to just be a 'set' no duplicates....
+fish_dict = {fish for fish in fish_list}
+
+print("fish_dict:", fish_dict)
+
+for fish in fish_dict:
+    print(fish)
+
+exit()
 
 
-print("np_fish_dict:", fish_dict)
 
-# print("Starting fish_list", fish_list)
+print("Starting fish_list", fish_list)
 
 day_count = 1
 while day_count <= 150:
