@@ -10,19 +10,29 @@ fish_list = [line.split(",") for line in file_list]
 # alter to alist of interger types rather than strings:
 fish_list = [int(i) for i in fish_list[0][0:None]]
 
-np_fish_list = np.array(fish_list)
-print("np_fish_list:", np_fish_list)
+# np_fish_list = np.array(fish_list)
+# fish_dict = {fish_list[0][i]: fish_list[0][i+1] for i in range(0, len(fish_list), 2)}
+
+def Convert(a):
+    it = iter(a)
+    res_dct = dict(zip(it, it))
+    return res_dct
+
+fish_dict = (Convert(fish_list))
+
+
+print("np_fish_dict:", fish_dict)
 
 # print("Starting fish_list", fish_list)
 
 day_count = 1
 while day_count <= 150:
-    for i in range(len(np_fish_list)):
+    for i in range(len(fish_dict)):
         # print("fish is:", fish_list[i])
-        if np_fish_list[i] == 0:
-            np_fish_list = np.append(np_fish_list, 8)
-            np_fish_list[i] = 7
-        np_fish_list[i] -= 1
+        if fish_dict[i] == 0:
+            fish_dict = np.append(np_fish_list, 8)
+            fish_dict[i] = 7
+        fish_dict[i] -= 1
 
     # print("updated fish_list after day:", day_count, " is:", np_fish_list)
 
@@ -30,4 +40,4 @@ while day_count <= 150:
     #if day_count == 50 or day_count == 100 or day_count == 110 or day_count == 115 or day_count == 130 or day_count == 150:
     print("day_count is:", day_count)
 
-print("Number of fish:", len(np_fish_list))
+print("Number of fish:", len(fish_dict))
