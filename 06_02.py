@@ -13,11 +13,13 @@ fish_list = [int(i) for i in fish_list[0][0:None]]
 # np_fish_list = np.array(fish_list)
 # fish_dict = {fish_list[0][i]: fish_list[0][i+1] for i in range(0, len(fish_list), 2)}
 
+#function to convert list to dictionary
 def Convert(a):
     it = iter(a)
     res_dct = dict(zip(it, it))
     return res_dct
 
+# convert list to dictionary
 fish_dict = (Convert(fish_list))
 
 
