@@ -13,7 +13,7 @@ fish_list = [int(i) for i in fish_list[0][0:None]]
 print("Starting fish_list", fish_list)
 
 day_count = 1
-while day_count <= 18:
+while day_count <= 21:
     for i in range(len(fish_list)):
         # print("fish is:", fish_list[i])
         if fish_list[i] == 0:

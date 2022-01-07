@@ -9,7 +9,6 @@ with open(filepath, 'r') as f:
 fish_list = [line.split(",") for line in file_list]
 # alter to alist of interger types rather than strings:
 fish_list = [int(i) for i in fish_list[0][0:None]]
-print("Start Fish_list:", fish_list)
 
 # np_fish_list = np.array(fish_list)
 # fish_dict = {fish_list[0][i]: fish_list[0][i+1] for i in range(0, len(fish_list), 2)}

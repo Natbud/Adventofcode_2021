@@ -1,0 +1,11 @@
+After 7 days:
+  The starting numbers will recur/be exacatly the same as at start
+  Any new fish will have a value 2 greater than the value of the fish that spawned it
+  Only fish with a start value of 8 will not spawn a new fish after 7 days.
+
+So every 7 day period the following needs to happen:
+  Fish with a start value of 8 need to be assigned to value 1
+  All other start fish values are left the same
+  New fish must be created with a value of 2 greater than each of the starting fish
+
+So in a 7 day period the number of fish (without value 8) doubles
