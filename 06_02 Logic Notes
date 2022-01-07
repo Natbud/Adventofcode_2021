@@ -5,6 +5,7 @@ After 7 days:
 
 So every 7 day period the following needs to happen:
   Fish with a start value of 8 need to be assigned to value 1
+  Fish with start value of 7 need to be assigned t value 0 and a new fish value 8 spawned
   All other start fish values are left the same
   New fish must be created with a value of 2 greater than each of the starting fish
 
