@@ -28,20 +28,27 @@ fish_list = [int(i) for i in fish_list[0][0:None]]
 print("Starting fish_list", fish_list)
 
 day_count = 0
-while day_count <= 21:
-    for i in fish_list[0:None]:
-        # THESE ARE NOT WORKING - NOT EVALUATING TRUE? OR ASSIGNMENT NOT WORKING>
-        if fish_list[i] == 8:
-            fish_list[i] = 1 # no new fish spawned for "8" fishes
-        if fish_list[i] == 7:
-            fish_list[i] = 0
+p = 0
+while day_count <= 256:
+    for i in fish_list[p:None]:
+        # THESE ARE NOT WORKING - NOT EVALUATING TRUE
+        if i == 8:
+            # print("fish at index:", p, " is 8")
+            fish_list[p] = 1 # no new fish spawned for "8" fishes
+            # print("fish_list index", p, "is now:", fish_list[p])
+            p += 1
+            continue
+        if i == 7:
+            fish_list[p] = 0
             fish_list.append(8) #spawn new "8" fish for any "7" fishes
+            p += 1
+            continue
         fish_list.append(i + 2)
-    day_count += 7
+        p += 1
     print("updated fish_list after day:", day_count, " is:", fish_list)
+    day_count += 7
+
 
 
     #if day_count == 50 or day_count == 100 or day_count == 110 or day_count == 115 or day_count == 130 or day_count == 150:
-    print("day_count is:", day_count)
-
 print("Number of fish:", len(fish_list))
