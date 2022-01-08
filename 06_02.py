@@ -1,6 +1,7 @@
 import numpy as np
+from collections import defaultdict
 
-filepath = "06_01_Test_Data.txt"
+filepath = "06_01_Data.txt"
 with open(filepath, 'r') as f:
     file_list = f.readlines()
     file_list = [line.strip() for line in file_list]
@@ -15,7 +16,8 @@ fish_list = [int(i) for i in fish_list[0][0:None]]
 
 fish_dict = {}     # creates new empty DICTIONARY works like an array
 
-#Setting the value of fish as 'keys' in dictionary - so 0 - 8 will be potential keys.
+# ENTER INITIAL VALUES / FISH INTO DICTIONARY:
+# Setting the value of fish as 'keys' in dictionary - so 0 - 8 will be potential keys.
 # The 'key' will be the fishes 'timer', the associated 'value' will be the number of fish with that timer
 # This will keep a 'count' of how many fish have each timer value as code progresses.
 for i in fish_list:
@@ -27,9 +29,27 @@ for i in fish_list:
     print(fish_dict)
 
 
+# CHANGE NUMBER OF FISH WITH EACH 'TIMER' (KEY) EVERY day
 
+days = 256
 
-print("Number of fish:", len(fish_list))
+for d in range(days):
+
+    updated_fishdict = defaultdict(int)                  # This is a 2nd temporary dictonary which doesn't throw a 'key error' if it doens't already have
+                                                         # the key you are trying to alter/edit/write to.   Using defaultdict(int) means that if there is
+                                                         # no key, it will assign 0 by default - so we can use this to oru advantage.
+
+    for fish_timer, fish_count in fish_dict.items():     # .items returns both key and value pair - here assigned to _fish_timer and fish_count.
+        if fish_timer == 0:                              #  Get all '0' fish that need to spawa new ones.
+            updated_fishdict[6] += fish_count            #  Increments the number of fish with key (timer) "6" by the current fish_count (from the 0 fish)
+            updated_fishdict[8] += fish_count            #  Increments the same number of '8' new spawned fishes (same number as fish_count)
+        else:
+            updated_fishdict[fish_timer-1] += fish_count     #  Moves the current 'fish_count' to the key (timer) below in the temporary dictionary.
+
+        fish_dict = updated_fishdict                     # Update the main list with the values from the temp one.
+
+print("Number of fish:", (sum(fish_dict.values())))
+
 
 
 
