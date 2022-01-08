@@ -10,45 +10,54 @@ fish_list = [line.split(",") for line in file_list]
 # alter to alist of interger types rather than strings:
 fish_list = [int(i) for i in fish_list[0][0:None]]
 
-# np_fish_list = np.array(fish_list)
-# fish_dict = {fish_list[0][i]: fish_list[0][i+1] for i in range(0, len(fish_list), 2)}
 
-#function to convert list to dictionary - NOT WORKING! only writes one value.
-# def Convert(a):
-#     it = iter(a)
-#     res_dct = dict(zip(it, it))
-#     return res_dct
+# DICTIONARY APPROACH:
 
-# # TRYING DICTIONARY APPROACH - NOT WORKING.
-# fish_dict = {fish for fish in fish_list}
-# print("fish_dict:", fish_dict)
-# for fish in fish_dict:
-#     print(fish)
+fish_dict = {}     # creates new empty DICTIONARY works like an array
 
-print("Starting fish_list", fish_list)
+#Setting the value of fish as 'keys' in dictionary - so 0 - 8 will be potential keys.
+# The 'key' will be the fishes 'timer', the associated 'value' will be the number of fish with that timer
+# This will keep a 'count' of how many fish have each timer value as code progresses.
+for i in fish_list:
+    if i not in fish_dict:    # check if the current 'fish' is already a 'key' in dict.
+        fish_dict[i] = 0      # sets up an entry in dictionary with key 'i' and value 0
+    fish_dict[i] += 1         # if key was there already increment it's associated value by 1 because
+                              # i've just added another fish with the same 'key'.
 
-day_count = 0
-p = 0
-while day_count <= 256:
-    for i in fish_list[p:None]:
-        # THESE ARE NOT WORKING - NOT EVALUATING TRUE
-        if i == 8:
-            # print("fish at index:", p, " is 8")
-            fish_list[p] = 1 # no new fish spawned for "8" fishes
-            # print("fish_list index", p, "is now:", fish_list[p])
-            p += 1
-            continue
-        if i == 7:
-            fish_list[p] = 0
-            fish_list.append(8) #spawn new "8" fish for any "7" fishes
-            p += 1
-            continue
-        fish_list.append(i + 2)
-        p += 1
-    print("updated fish_list after day:", day_count, " is:", fish_list)
-    day_count += 7
+    print(fish_dict)
+
+
+
+
+print("Number of fish:", len(fish_list))
+
+
+
+# 7 DAY CYCLE APPROACH - GOT BOGGED DOWN IN THIS!!!
+# print("Starting fish_list", fish_list)
+#
+# day_count = 0
+# p = 0
+# while day_count <= 256:
+#     for i in fish_list[p:None]:
+#         # THESE ARE NOT WORKING - NOT EVALUATING TRUE
+#         if i == 8:
+#             print("fish at index:", p, " is 8")
+#             fish_list[p] = 1 # no new fish spawned for "8" fishes
+#             print("fish_list index", p, "is now:", fish_list[p])
+#
+#             continue
+#         if i == 7:
+#             fish_list[p] = 0
+#             fish_list.append(8) #spawn new "8" fish for any "7" fishes
+#             fish_list[p] = 6
+#
+#             continue
+#         fish_list.append(i + 2)
+#
+#     print("updated fish_list after day:", day_count, " is:", fish_list)
+#     day_count += 7
 
 
 
     #if day_count == 50 or day_count == 100 or day_count == 110 or day_count == 115 or day_count == 130 or day_count == 150:
-print("Number of fish:", len(fish_list))
