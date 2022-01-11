@@ -1,4 +1,5 @@
 import statistics as st
+import math
 
 filepath = "07_01_Data.txt"
 with open(filepath, 'r') as f:
@@ -15,7 +16,7 @@ file_list = [int(i) for i in file_list[0:None]]
 
 file_list.sort()
 print(file_list)
-mean_value = round(st.mean(file_list)) #round - roudns to a whole number
+mean_value = math.floor(st.mean(file_list)) #round - roudns to a whole number
 print("Mean Value is:", mean_value)
 
 total_fuel = 0
