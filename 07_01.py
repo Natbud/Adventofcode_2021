@@ -1,6 +1,6 @@
 import statistics as st
 
-filepath = "07_01_Data.txt"
+filepath = "07_01_Test_Data.txt"
 with open(filepath, 'r') as f:
     file_list = f.read().split(",")
 
@@ -9,7 +9,7 @@ file_list = [int(i) for i in file_list[0:None]]
 
 print(file_list)
 
-file_list.sort()
+# file_list.sort()
 median_value = st.median(file_list)
 
 print("Median Value is:", median_value)
