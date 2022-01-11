@@ -14,13 +14,15 @@ print(file_list)
 # numbers use least fuel?  Something like that.
 
 file_list.sort()
-median_value = st.median(file_list)
-print("Median Value is:", median_value)
+mean_value = st.mean(file_list)
+print("Mean Value is:", mean_value)
 
 total_fuel = 0
 for i in file_list:
     # fuel = 0
-    fuel = abs(i - median_value)
+    fuel = abs(i - mean_value)
+
+    # Use 'Guass' formula to get sum of all positions moved  when calculating fuel
     total_fuel = total_fuel + fuel
 
 
