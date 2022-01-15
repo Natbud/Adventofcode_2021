@@ -1,7 +1,13 @@
 
 filepath = "08_01_Data.txt"
 
-with open(filepath, 'r') as f:    in file_list]
+with open(filepath, 'r') as f:
+    file_list = f.readlines()
+
+file_list = [line.strip("\n") for line in file_list]
+print(file_list)
+
+file_list = [line.split("|")[1].strip() for line in file_list]
 print(file_list)
 
 
@@ -12,7 +18,7 @@ for output in file_list[0:None]:
         # print(word)
         word_lengths.append(len(word))
 
-print(word_lengths)
+# print(word_lengths)
 
 # How to count mulitple different values in a list:
 digit1 = 2
