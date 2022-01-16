@@ -1,0 +1,38 @@
+Digits and number of segments / unique identifier:
+
+0 - 6
+1 - 2
+2 - 5
+3 - 5
+4 - 4
+5 - 5
+6 - 6
+7 - 3
+8 - 7
+9 - 6
+
+
+
+1, 4, 7, 8 are all unique no problem as in sect 1.
+
+1 - 2
+4 - 4
+7 - 3
+8 - 7
+
+
+Using new configuration of wires to segments for section 2:
+
+0, 6, 9 = 6
+
+0 - section f is missing
+6 - section a is missing
+9 - section g is missing
+
+
+
+2, 3, 5 = 5
+
+2 - e and b are missing - will need 'and' both conditions
+3 - e and g are missing - will need 'and' both conditions
+5 - a and g are missing - will need 'and' both conditions
