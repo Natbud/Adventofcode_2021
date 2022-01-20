@@ -26,31 +26,31 @@ for output in file_list_output[0:None]:
 
 # print(word_lengths)
 
-# How to count mulitple different values in a list:
-digit1 = 2
-digit4 = 4
-digit7 = 3
-digit8 = 7
 digit_value = 0
 
 for length in word_lengths:
     # check for 1, 4, 7 and 8 Unique number of segments for these:
-    if length == 2
-    digit_value = 1
-    if length == 4
-    digit_value = 4
-    if length == 3
-    digit_value = 7
-    if length == 7
-    digit_value = 8
-
- 
+    if length == 2:
+        digit_value = 1
+    if length == 4:
+        digit_value = 4
+    if length == 3:
+        digit_value = 7
+    if length == 7:
+        digit_value = 8
 
 
+    # check for 0, 6, 9 (all length 6)
+    if length == 6:
+        # check if section f, g or a is missing
+        pass
+
+    print(digit_value)
 
 
-    or length == 4 or length == 3 or length == 7:
 
 
 
-print(final_count)
+
+
+# print(final_count)
