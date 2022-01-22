@@ -11,9 +11,6 @@ Digits and number of segments for each / unique identifier:
 8 - 7
 9 - 6
 
-
-
-
 1, 4, 7, 8 are all unique
 
 Now find non-unique ones:
