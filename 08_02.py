@@ -1,5 +1,5 @@
 
-filepath = "08_01_Example_Data.txt"
+filepath = "08_01_Test_Data.txt"
 
 with open(filepath, 'r') as f:
     file_list = f.readlines()
@@ -142,6 +142,7 @@ for digit in file_list_digits[0:None]:
     # NOW work out the digits of the file_list_output
     # Read A-Z sorted - digit words into a list:
     digit_word_list = []
+    digit_word_list.append(''.join(sorted(digit0_word)))
     digit_word_list.append(''.join(sorted(digit1_word)))
     digit_word_list.append(''.join(sorted(digit2_word)))
     digit_word_list.append(''.join(sorted(digit3_word)))
@@ -150,13 +151,21 @@ for digit in file_list_digits[0:None]:
     digit_word_list.append(''.join(sorted(digit6_word)))
     digit_word_list.append(''.join(sorted(digit7_word)))
     digit_word_list.append(''.join(sorted(digit8_word)))
-    print(digit_word_list)
+    # print("digit_word_list:", digit_word_list)
 
+# print("file_list_output", file_list_output)
 
-# for output_word in file_list_output:
-    # if (''.join(sorted(output_word))  == digit_word
+output_result_list = []
 
-        # print("matched a digit!")
+for output_word in file_list_output[0:None]:
+    for element in output_word.split():
+        # print(''.join(sorted(element)), "checked")
+        for i in range(len(digit_word_list)):
+            if ''.join(sorted(element)) == digit_word_list[i]:
+                output_result_list.append(i)
+
+    print("output_result_list:", output_result_list)
+
 
 
 
