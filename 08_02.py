@@ -32,6 +32,7 @@ for digit in file_list_digits[0:None]:
             digit_value = 7
         if word_length == 7:
             digit_value = 8
+
         # check for 0, 6, 9 (all length 6)
         if word_length == 6 and "f" not in word:
             digit_value = 0
@@ -39,6 +40,7 @@ for digit in file_list_digits[0:None]:
             digit_value = 6
         if word_length == 6 and "g" not in word:
             digit_value = 9
+
 
         # check for 2, 3, 5 (all length 5) - THIS ISN'T WORKING......
         matches1 = ["e", "b"]

@@ -16,7 +16,19 @@ Digits and number of segments for each / unique identifier:
 
 1, 4, 7, 8 are all unique
 
-digit - segments - corresponding letters
+Now find non-unique ones:
 
-1 - 2 - be
-4 - 4 - cgeb   (e/b alredy defined in digit 1)
+digit - segments - corresponding 'positions'
+
+RULES (need to be checked in order to succeed):
+
+0, 9, 6 (all 6 letters)
+1) Any word with one of the digit 1 letters missing = digit 6
+3) Any word with one of the same letters missing as digit 3 had missing = digit 9
+4) Any word with a different letter missing than the missing letter in 6 and 9 = digit 0
+(last one: or any remaining word with 6 letters not dealt with so far)
+
+2,5,3 (all 5 letters)
+2) Any word where both digit 1 letters are present = digit 3
+5) Any word with digit 9 AND 6 missing letters also missing = digit 5
+6) Any word with 2 letters missing that are NOT missing in 5 = digit 2
