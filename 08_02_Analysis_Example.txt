@@ -1,4 +1,4 @@
-Digits and number of segments / unique identifier:
+Digits and number of segments for each / unique identifier:
 
 0 - 6
 1 - 2

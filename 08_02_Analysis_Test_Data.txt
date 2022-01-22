@@ -1,0 +1,22 @@
+Digits and number of segments for each / unique identifier:
+
+0 - 6
+1 - 2
+2 - 5
+3 - 5
+4 - 4
+5 - 5
+6 - 6
+7 - 3
+8 - 7
+9 - 6
+
+
+
+
+1, 4, 7, 8 are all unique
+
+digit - segments - corresponding letters
+
+1 - 2 - be
+4 - 4 - cgeb   (e/b alredy defined in digit 1)
