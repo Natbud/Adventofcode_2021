@@ -26,6 +26,8 @@ for digit in file_list_digits[0:None]:
         # check for 1, 4, 7 and 8 Unique number of segments for these:
         if word_length == 2:
             digit_value = 1
+            # Get the actual letters contained in 1 here too..
+            
         if word_length == 4:
             digit_value = 4
         if word_length == 3:
@@ -33,9 +35,11 @@ for digit in file_list_digits[0:None]:
         if word_length == 7:
             digit_value = 8
 
-        # check for 0, 6, 9 (all length 6)
-        if word_length == 6 and "f" not in word:
+        # RULE 1 - Check for digit 6
+        if (word_length == 6 and
+            "f" not in word):
             digit_value = 0
+
         if word_length == 6 and "a" not in word:
             digit_value = 6
         if word_length == 6 and "g" not in word:
