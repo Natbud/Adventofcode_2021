@@ -1,29 +1,31 @@
 
-filepath = "08_01_Test_Data.txt"
+filepath = "08_01_Data.txt"
 
 with open(filepath, 'r') as f:
     file_list = f.readlines()
 
 file_list = [line.strip("\n") for line in file_list]
-print(file_list)
+# print(file_list)
 
 # Get digits codes from 1st half of each line:
 global file_list_digits
 file_list_digits = [line.split("|")[0].strip() for line in file_list]
-print(file_list_digits)
+# print(file_list_digits)
 
 # Get output code from 2nd half of each line:
 global file_list_output
 file_list_output = [line.split("|")[1].strip() for line in file_list]
-print(file_list_output)
+# print(file_list_output)
 
 word_lengths = []
 digit_word_list = []
+all_output_values = []
 # index = 0
 #Had to add addtionional loop so code would do one line only at a time:
 
 for index, p in enumerate(file_list):
-
+    digit_word_list = []
+    print("*****CHECKING LINE:*****", index + 1)
     for word in file_list_digits[index].split():
         # print("word:", word)
         word_length = (len(word))
@@ -38,7 +40,7 @@ for index, p in enumerate(file_list):
         if word_length == 4:
             digit_value = 4
             digit4_word = word
-            digit_word_list.append(''.join(sorted(digit4_word)))
+            # digit_word_list.append(''.join(sorted(digit4_word)))
             print(word, "digit_value:", digit_value)
         if word_length == 3:
             digit_value = 7
@@ -162,32 +164,36 @@ for index, p in enumerate(file_list):
     digit_word_list.append(''.join(sorted(digit6_word)))
     digit_word_list.append(''.join(sorted(digit7_word)))
     digit_word_list.append(''.join(sorted(digit8_word)))
-
-
-
-
-
+    digit_word_list.append(''.join(sorted(digit9_word)))
 
     print("digit_word_list:", digit_word_list)
-
+    print("file_list_output[index]", file_list_output[index])
     # print("file_list_output", file_list_output)
 
     output_result_list = []
-
+    output_result_str = ""
 
     for element in file_list_output[index].split():
         print (element, "checked")
         for i in range(len(digit_word_list)):
             if ''.join(sorted(element)) == digit_word_list[i]:
-                output_result_list.append(i)
+                print("value found:", (i))
+                output_result_list.append(str(i))
 
-    print("output_result_list:", output_result_list)
-    # SUm the output result list:
-    sum_output_result_list = sum(output_result_list)
-    print("sum_output_result_list:", sum_output_result_list)
+    for q in output_result_list:
+        output_result_str = output_result_str + q
 
+    # Convert from string value to integer (ready for summing later)
+    output_result_int = (int(output_result_str))
 
-    # index += 1
+    # print("output_result_list:", output_result_list) & Add to a list
+    print("output_result_int:", output_result_int)
+    all_output_values.append(output_result_int)
+
+print("all_output_values:", all_output_values)
+# Now add all the output_result_ints togetehr:
+print("Values added together:", sum(all_output_values))
+
 
 
 
