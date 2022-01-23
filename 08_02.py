@@ -32,7 +32,7 @@ for index, p in enumerate(file_list):
         if word_length == 2:
             digit_value = 1
             digit1_word = word
-            digit_word_list.append(''.join(sorted(digit1_word)))
+            # digit_word_list.append(''.join(sorted(digit1_word)))
             print(word, "digit_value:", digit_value)
             # print("digit1_word:", digit1_word)
         if word_length == 4:
@@ -43,12 +43,12 @@ for index, p in enumerate(file_list):
         if word_length == 3:
             digit_value = 7
             digit7_word = word
-            digit_word_list.append(''.join(sorted(digit7_word)))
+            # digit_word_list.append(''.join(sorted(digit7_word)))
             print(word, "digit_value:", digit_value)
         if word_length == 7:
             digit_value = 8
             digit8_word = word
-            digit_word_list.append(''.join(sorted(digit8_word)))
+            # digit_word_list.append(''.join(sorted(digit8_word)))
             print(word, "digit_value:", digit_value)
 
     # Need a separate loop the same for next bit (so can establish digit 1 word above
@@ -61,7 +61,7 @@ for index, p in enumerate(file_list):
             # print("word length is", word_length)
                 digit_value = 6
                 digit6_word = word
-                digit_word_list.append(''.join(sorted(digit6_word)))
+                # digit_word_list.append(''.join(sorted(digit6_word)))
                 print(word, "digit_value:", digit_value)
                 # Now get MISSING segment lettername:
                 # Way to GET DIFFERENCE OF TWO STRINGS using replace:
@@ -82,7 +82,7 @@ for index, p in enumerate(file_list):
             # print("word length is", word_length)
             digit_value = 3
             digit3_word = word
-            digit_word_list.append(''.join(sorted(digit3_word)))
+            # digit_word_list.append(''.join(sorted(digit3_word)))
             print(word, "digit_value:", digit_value)
             # Now find which characters are MISSING from digit 3
             # Way to GET DIFFERENCE OF TWO STRINGS using replace:
@@ -101,6 +101,7 @@ for index, p in enumerate(file_list):
             if digit3_missing[0] not in word or digit3_missing[1] not in word:
                 digit_value = 9
                 digit9_word = word
+                # digit_word_list.append(''.join(sorted(digit9_word)))
                 print(word, "digit_value:", digit_value)
                 # Now get MISSING segment lettername:
                 # Way to GET DIFFERENCE OF TWO STRINGS using replace:
@@ -119,7 +120,7 @@ for index, p in enumerate(file_list):
             if digit6_missing[0] in word and digit9_missing[0] in word:
                 digit_value = 0
                 digit0_word = word
-                digit_word_list.append(''.join(sorted(digit0_word)))
+                # digit_word_list.append(''.join(sorted(digit0_word)))
                 print(word, "digit_value:", digit_value)
 
     for word in file_list_digits[index].split():
@@ -129,7 +130,7 @@ for index, p in enumerate(file_list):
             if digit6_missing[0] not in word and digit9_missing[0] not in word:
                 digit_value = 5
                 digit5_word = word
-                digit_word_list.append(''.join(sorted(digit5_word)))
+                # digit_word_list.append(''.join(sorted(digit5_word)))
                 print(word, "digit_value:", digit_value)
 
     for word in file_list_digits[index].split():
@@ -147,29 +148,43 @@ for index, p in enumerate(file_list):
             if digit2_missing[0] in digit5_word and digit2_missing[1] in digit5_word:
                 digit_value = 2
                 digit2_word = word
-                digit_word_list.append(''.join(sorted(digit2_word)))
+                # digit_word_list.append(''.join(sorted(digit2_word)))
                 print(word, "digit_value:", digit_value)
 
     # NOW work out the digits of the file_list_output
     # Read A-Z sorted - digit words into a list:
+    digit_word_list.append(''.join(sorted(digit0_word)))
+    digit_word_list.append(''.join(sorted(digit1_word)))
+    digit_word_list.append(''.join(sorted(digit2_word)))
+    digit_word_list.append(''.join(sorted(digit3_word)))
+    digit_word_list.append(''.join(sorted(digit4_word)))
+    digit_word_list.append(''.join(sorted(digit5_word)))
+    digit_word_list.append(''.join(sorted(digit6_word)))
+    digit_word_list.append(''.join(sorted(digit7_word)))
+    digit_word_list.append(''.join(sorted(digit8_word)))
+
+
+
+
+
+
     print("digit_word_list:", digit_word_list)
 
     # print("file_list_output", file_list_output)
 
-output_result_list = []
+    output_result_list = []
 
 
-for element in file_list_output[index].split():
-    print (element, "checked")
-    for i in range(len(digit_word_list)):
-        if ''.join(sorted(element)) == digit_word_list[i]:
-            output_result_list.append(i)
+    for element in file_list_output[index].split():
+        print (element, "checked")
+        for i in range(len(digit_word_list)):
+            if ''.join(sorted(element)) == digit_word_list[i]:
+                output_result_list.append(i)
 
-print("output_result_list:", output_result_list)
-
-# SUm the output result list:
-sum_output_result_list = sum(output_result_list)
-print(sum_output_result_list)
+    print("output_result_list:", output_result_list)
+    # SUm the output result list:
+    sum_output_result_list = sum(output_result_list)
+    print("sum_output_result_list:", sum_output_result_list)
 
 
     # index += 1
