@@ -190,24 +190,13 @@ for index, p in enumerate(file_list):
     print("output_result_int:", output_result_int)
     all_output_values.append(output_result_int)
 
-print("all_output_values:", all_output_values)
+    # print("digit (line) just done:", file_list_digits[index].split())
+
+# print("all_output_values:", all_output_values)
 # Now add all the output_result_ints togetehr:
 print("Values added together:", sum(all_output_values))
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-print("digit (line) just done:", file_list_digits[index].split())
 
 
 
