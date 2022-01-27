@@ -1,0 +1,15 @@
+Finding Basin Size:
+
+GET FIRST ROW SIZE:
+1. Start at low point co-ordinates
+2. Count current number (basin_size +1)
+3. for/loop to the right, if number is less than 9 then basin_size_+1, else stop.
+
+4. New nested for/loop here going down (and then up!) from each digit arrived in point 3 until hit 9 (adding to basin size), then stop and return to previous loop.
+
+5. Back to start point and do point 3 again but move left this time (again including the nested loops these will be exactly the same as before)
+
+By this point basin_size will be at the value of the size of the basin at that location.
+
+
+6. Repeat above for every low point found.
