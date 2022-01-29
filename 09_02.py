@@ -26,6 +26,7 @@ for r, row in enumerate(file_list):
 print("np_grid:\n", np_grid)
 low_points = []
 risk_levels = []
+low_point_positions = []  # for storing key pairs for co-ordinates of each low point.
 # Now iterate to find low points:
 for r, row in enumerate(np_grid):
     for d, digit in enumerate(row):
@@ -59,10 +60,15 @@ for r, row in enumerate(np_grid):
         if (digit < north_digit and digit < east_digit and
             digit < south_digit and digit < west_digit):
             low_points.append(digit)
-            risk_levels.append(digit+1) # risk level is 1+ initial value for low point.
             print("LOW POINT FOUND")
+            print("Low Point Digit", (int(digit)))
+            # Store low point co-ordinate in low point dictionary as key pair.
+            # sets r as the key and d as the paired value.
+            low_point_positions.append(r,d)
 
-print("sum of risk levels:", sum(risk_levels))
+print("low_point_positions", low_point_positions)
+
+
 
 #print("np_grid no of rows:", np_grid.shape[1])
 # print("np_grid no of columns:", np_grid.shape[0])
