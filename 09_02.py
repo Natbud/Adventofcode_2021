@@ -61,14 +61,28 @@ for r, row in enumerate(np_grid):
             digit < south_digit and digit < west_digit):
             low_points.append(digit)
             print("LOW POINT FOUND")
-            print("Low Point Digit", (int(digit)))
-            # Store low point co-ordinate in low point dictionary as key pair.
-            # sets r as the key and d as the paired value.
-            low_point_positions.append(r,d)
+            # print("Low Point Digit", (int(digit)))
+            # Collect low point position/co-ordinate:
+            low_point_positions.append([r,d])
 
 print("low_point_positions", low_point_positions)
 
 
+# Iterate through low points:
+for low_point in low_point_positions:
+    basin_size = 0
+    # set low point co-ord values:
+    row = low_point[0]
+    col = low_point[1]
+    # start traversal to find basin size:
+    # RIGHT FROM LOW POINT:
+    for row_val in np_grid[row:row+1]:
+        for col_val in row_val[col:None]:
+            if col_val < 9:
+                print("col-val < 9 current row:", (int(col_val)))
+            # MOVE ON TO LEFT LOW POINT HERE:
+            print("low point horizontal right explore finished")
+            break
 
-#print("np_grid no of rows:", np_grid.shape[1])
-# print("np_grid no of columns:", np_grid.shape[0])
+
+    # LEFT FROM LOW POINT:
