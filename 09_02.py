@@ -77,12 +77,21 @@ for low_point in low_point_positions:
     # start traversal to find basin size:
     # RIGHT FROM LOW POINT:
     for row_val in np_grid[row:row+1]:
+        print("starting low point right traversal:")
         for col_val in row_val[col:None]:
             if col_val < 9:
-                print("col-val < 9 current row:", (int(col_val)))
-            # MOVE ON TO LEFT LOW POINT HERE:
-            print("low point horizontal right explore finished")
-            break
-
-
-    # LEFT FROM LOW POINT:
+                print("right col-val < 9 current row:", (int(col_val)))
+            else:
+                # MOVE ON TO LEFT LOW POINT HERE:
+                print("low point horizontal right explore finished")
+                break
+        # LEFT FROM LOW POINT:
+        print("now starting left horiz traversal:")
+        # col -1 used to avoid re-counting the inital value at low point
+        for col_val in row_val[col-1::-1]:
+            if col_val < 9:
+                print("left col-val < 9 current row:", (int(col_val)))
+            else:
+                # MOVE ON TO LEFT LOW POINT HERE:
+                print("low point horizontal left explore finished")
+                break
