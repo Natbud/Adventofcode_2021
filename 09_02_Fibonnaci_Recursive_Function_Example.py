@@ -1,4 +1,7 @@
 # Python program to display the fibonaci sequence
+# Recursive function (that calls itself) any time you want to
+# Repeat the same operation on multiple values relative to the current
+# one.
 
 def recur_fibo(n):
     if n<=1:
