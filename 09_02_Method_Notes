@@ -1,5 +1,8 @@
 Finding Basin Size:
 
+**THIS DOESN'T WORK AS BASIN COULD SPRAWL OUT FOREVER IN
+MANY DIRECTIONS SO TOO CUMBERSOME**
+
 GET FIRST ROW SIZE:
 1. Start at low point co-ordinates
 2. Count current number (basin_size +1)
