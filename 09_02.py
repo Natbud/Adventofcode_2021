@@ -67,39 +67,76 @@ for r, row in enumerate(np_grid):
 
 print("low_point_positions", low_point_positions)
 
-basin_checklist = []
+
 # Iterate through low points:
 for low_point in low_point_positions:
-    # start at 1 to account for current low point.
-    basin_size = 1
+    basin_checklist = []
+    basin_count = 0
     # set low point co-ord values:
     row = low_point[0]
     col = low_point[1]
+    print("\n current low point being checked: ", low_point, "  value:", (int(np_grid[row][col])))
+    # Add initial low point to basin check list
+    basin_checklist.append([row,col])
+    print("basin checklist before low point check:", basin_checklist)
     # HOW TO FIND BASIN SIZE.......
     # try/except to ignore any erros with values outside of grid dataset
-    # them to 9 if so.
-    print("current low point being checked: ", low_point, "  value:", np_grid[row][col])
-    try:
-        low_north = np_grid[row-1][col]
-    except:
-        low_north = 9
-    try:
-        low_east = np_grid[row][col+1]
-    except:
-        low_east = 9
-    try:
-        low_south = np_grid[row+1][col]
-    except:
-        low_south = 9
-    try:
-        low_west = np_grid[row][col-1]
-    except:
-        low_west = 9
+    # them to 9 if so.  row 0 is a special case, loops back to last row so use
+    # if condition instead for first one:
 
-    print("north:", low_north, "  east:", low_east, "  south:", low_south, "  west:", low_west)
+    # This while line seems to be resulting endless loop (checklist is never
+    # emapty...)
+    while not len(basin_checklist) == 0:
 
-        # Add north, south , east , west of lowpoint to checklist
-        # North
+        # Now check each value in the basin_checklist:
+        for check_value in basin_checklist[0:None]:
 
-    if low_north < 9:
-        basin_checklist.append([np_grid[col-1],[row]])
+            if row > 0:
+                low_north = (int(np_grid[row-1][col]))
+            else:
+                low_north = 9
+            try:
+                low_east = (int(np_grid[row][col+1]))
+            except:
+                low_east = 9
+            try:
+                low_south = (int(np_grid[row+1][col]))
+            except:
+                low_south = 9
+            try:
+                low_west = (int(np_grid[row][col-1]))
+            except:
+                low_west = 9
+
+            print("north:", low_north, "  east:", low_east, "  south:", low_south, "  west:", low_west)
+
+                # Add co-ordinates from north, south , east , west of lowpoint to checklist
+                # North
+
+            if low_north < 9:
+                basin_checklist.append([row-1,col])
+                basin_count += 1
+            if low_east < 9:
+                basin_checklist.append([row,col+1])
+                basin_count += 1
+            if low_south < 9:
+                basin_checklist.append([row+1,col])
+                basin_count += 1
+            if low_west < 9:
+                basin_checklist.append([row,col-1])
+                basin_count += 1
+
+            # Change current checked value to a 9 in original np_grid array
+            # so it will not be added to check list in future:
+            np_grid[row][col] = 9
+            print("np_grid low point changed to 9:\n", np_grid)
+
+            # Remove current check_value from checklist so isn't re=added as a
+            # North South East or West point for a different low point in future
+            # Deletes the first element in the list (the least recent added which
+            # should equiate to the current one just checked as list is being traversed
+            # in order values have been appended)
+            del basin_checklist[0]
+
+        print("basin checklist after low point check:", basin_checklist)
+        print("basin count for this low point:", basin_count)
