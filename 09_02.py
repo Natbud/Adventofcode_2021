@@ -1,6 +1,8 @@
 import numpy as np
+import operator as op
+from functools import reduce
 
-filepath = "09_01_Test_Data.txt"
+filepath = "09_01_Data.txt"
 
 with open(filepath) as f:
     file_list = f.read().splitlines()
@@ -67,18 +69,20 @@ for r, row in enumerate(np_grid):
 
 print("low_point_positions", low_point_positions)
 
+all_basin_sizes = []
 
 # Iterate through low points:
 for low_point in low_point_positions:
     basin_checklist = []
-    basin_count = 0
+    # set basin count to 1 as we know the starting low point is always a match....
+    basin_count = 1
     # set low point co-ord values:
     row = low_point[0]
     col = low_point[1]
-    print("\n current low point being checked: ", low_point, "  value:", (int(np_grid[row][col])))
+    print("\ncurrent low point being checked: ", low_point, "  value:", (int(np_grid[row][col])))
     # Add initial low point to basin check list
     basin_checklist.append([row,col])
-    print("basin checklist before low point check:", basin_checklist)
+    print("basin checklist before low point check:", basin_checklist, "\n\n")
     # HOW TO FIND BASIN SIZE.......
     # try/except to ignore any erros with values outside of grid dataset
     # them to 9 if so.  row 0 is a special case, loops back to last row so use
@@ -90,7 +94,10 @@ for low_point in low_point_positions:
 
         # Now check each value in the basin_checklist:
         for check_value in basin_checklist[0:None]:
-
+            print("current point being checked:", check_value)
+            # Set row / col values for currrent checked point here:
+            row = check_value[0]
+            col = check_value[1]
             if row > 0:
                 low_north = (int(np_grid[row-1][col]))
             else:
@@ -103,9 +110,9 @@ for low_point in low_point_positions:
                 low_south = (int(np_grid[row+1][col]))
             except:
                 low_south = 9
-            try:
+            if col > 0:
                 low_west = (int(np_grid[row][col-1]))
-            except:
+            else:
                 low_west = 9
 
             print("north:", low_north, "  east:", low_east, "  south:", low_south, "  west:", low_west)
@@ -114,22 +121,27 @@ for low_point in low_point_positions:
                 # North
 
             if low_north < 9:
-                basin_checklist.append([row-1,col])
-                basin_count += 1
+                # the if here,  only appends to list if not already there (stop duplicates being entered)
+                if [row-1,col] not in basin_checklist:
+                    basin_checklist.append([row-1,col])
+                    basin_count += 1
             if low_east < 9:
-                basin_checklist.append([row,col+1])
-                basin_count += 1
+                if [row,col+1] not in basin_checklist:
+                    basin_checklist.append([row,col+1])
+                    basin_count += 1
             if low_south < 9:
-                basin_checklist.append([row+1,col])
-                basin_count += 1
+                if [row+1,col] not in basin_checklist:
+                    basin_checklist.append([row+1,col])
+                    basin_count += 1
             if low_west < 9:
-                basin_checklist.append([row,col-1])
-                basin_count += 1
+                if [row,col-1] not in basin_checklist:
+                    basin_checklist.append([row,col-1])
+                    basin_count += 1
 
             # Change current checked value to a 9 in original np_grid array
             # so it will not be added to check list in future:
             np_grid[row][col] = 9
-            print("np_grid low point changed to 9:\n", np_grid)
+            print("np_grid checked point changed to 9:\n", np_grid)
 
             # Remove current check_value from checklist so isn't re=added as a
             # North South East or West point for a different low point in future
@@ -138,5 +150,13 @@ for low_point in low_point_positions:
             # in order values have been appended)
             del basin_checklist[0]
 
-        print("basin checklist after low point check:", basin_checklist)
-        print("basin count for this low point:", basin_count)
+            print("basin checklist after current point check:", basin_checklist)
+            print("basin count after current point check:", basin_count, "\n\n")
+
+    print("**** Low point: ", low_point, " CHECK DONE, basin size of point:", basin_count, " *****\n\n\n")
+    all_basin_sizes.append(basin_count)
+
+sorted_basin_sizes = sorted(all_basin_sizes, reverse=True)
+print("all_basin_sizes sorted high to low:", sorted_basin_sizes)
+# using 'operator' (as op) and 'reduce' (from functools) imports to final multiply neatly:
+print("largest 3 basin sizes multiplied together:", reduce(op.mul, sorted_basin_sizes[:3]))
