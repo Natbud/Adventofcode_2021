@@ -1,6 +1,6 @@
 import numpy as np
 
-filepath = "11_01_Small_Test_Data.txt"
+filepath = "11_01_Test_Data.txt"
 
 # using splitlines like this is good as it splits on the newline character
 # which essentially removes it from each line during reading.
@@ -27,35 +27,75 @@ for r, row in enumerate(file_list):
     for d, digit in enumerate(row):
         np_grid[r][d] = digit
 
-print("np_grid:\n", np_grid)
+print("np_grid before any steps:\n", np_grid)
 
 # GRID CREATED.
 
-# START A 'STEP':
-# Substep 1:  Increase every element in grid by 1
-for r, row in enumerate(np_grid):
-    for d, digit in enumerate(row):
-        np_grid[r][d] += 1
+# Set number of steps to execute:
+max_steps = 100
+step = 0
 
-print("np_grid:\n", np_grid)
+while step < max_steps:
+    # START A 'STEP':
+    step += 1
 
-# Substep 2: 'Flash any octopus/value greater than 9'
-for r, row in enumerate(np_grid):
-    for d, digit in enumerate(row):
-        if np_grid[r][d] > 9:
-            # element flashes - increase all 8 adjacent (incl diags) by 1:
-            # NSEW:
-            np_grid[r][d+1] +=1
-            np_grid[r+1][d] +=1
-            np_grid[r][d-1] +=1
-            np_grid[r-1][d] +=1
-            # DIAGS:
-            np_grid[r-1][d+1] +=1
-            np_grid[r+1][d+1] +=1
-            np_grid[r-1][d-1] +=1
-            np_grid[r+1][d-1] +=1
+    # Substep 1:  Increase every element in grid by 1
+    for r, row in enumerate(np_grid):
+        for d, digit in enumerate(row):
+            np_grid[r][d] += 1
 
-            # finally set current octopus to 0:
-            np_grid[r][d] = 0
+    # print("np_grid:\n", np_grid)
+    # while not np.all(np_grid < 10):
+    # Substep 2: 'Flash any octopus/value greater than 9'
+    for r, row in enumerate(np_grid):
+        for d, digit in enumerate(row):
+            if np_grid[r][d] > 9:
+                # element flashes - increase all 8 adjacent (incl diags) by 1:
+                # NSEW:
+                try:
+                    np_grid[r][d+1] +=1
+                except:
+                    pass
+                try:
+                    np_grid[r+1][d] +=1
+                except:
+                    pass
+                try:
+                    np_grid[r][d-1] +=1
+                except:
+                    pass
+                try:
+                    np_grid[r-1][d] +=1
+                except:
+                    pass
+                try:
+                # DIAGS:
+                    np_grid[r-1][d+1] +=1
+                except:
+                    pass
+                try:
+                    np_grid[r+1][d+1] +=1
+                except:
+                    pass
+                try:
+                    np_grid[r-1][d-1] +=1
+                except:
+                    pass
+                try:
+                    np_grid[r+1][d-1] +=1
+                except:
+                    pass
 
-print("np_grid:\n", np_grid)
+    # Now need to FLASH any others that have reached 10 or more....recursive?
+    # Add flashed positions to a list so those positions can't be flashed agian
+    # While any value in np_grid > 9 AND If np_grid position is NOT on don't check list...
+    # Then flash and incrase surrounding for any value greater than 9.
+
+    # finally set all octopuses with values greater than 9 to 0:
+    for r, row in enumerate(np_grid):
+        for d, digit in enumerate(row):
+            if digit > 9:
+                np_grid[r][d] = 0
+            # now make sure that
+
+    print("np_grid after step:", step, "\n", np_grid)
