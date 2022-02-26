@@ -93,7 +93,7 @@ while step < max_steps:
                 except:
                     pass
 
-    print("flashed lists:\n", flashed_rlist,"\n", flashed_dlist)
+    print("flashed lists step:",step,"\n", flashed_rlist,"\n", flashed_dlist)
     # Now need to FLASH any others that have reached 10 or more....recursive?
     # Add flashed positions to a list so those positions can't be flashed agian
     # While any value in np_grid > 9 AND If np_grid position is NOT on don't check list...
