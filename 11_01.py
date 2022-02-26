@@ -47,16 +47,16 @@ while step < max_steps:
     print("step:",step, " all increased by 1:\n", np_grid)
 
     # print("np_grid:\n", np_grid)
-    flashed_rlist = []
-    flashed_dlist = []
-    # while not np.all(np_grid < 10):
+    flashed_list = []
+
     # Substep 2: 'Flash any octopus/value greater than 9'
+    # while not np.all(np_grid < 10):
+    # while not np.less(np.all(np_grid), 10):
     for r, row in enumerate(np_grid):
         for d, digit in enumerate(row):
-            if digit >= 10:
+            if digit >= 10 and [r,d] not in flashed_list:
                 # add co-ordinate to flashed_list
-                flashed_rlist.append(r)
-                flashed_dlist.append(d)
+                flashed_list.append([r,d])
                 # element flashes - increase all 8 adjacent (incl diags) by 1:
                 # NSEW:
                 try:
@@ -93,12 +93,14 @@ while step < max_steps:
                 except:
                     pass
 
-    print("flashed lists step:",step,"\n", flashed_rlist,"\n", flashed_dlist)
+
     # Now need to FLASH any others that have reached 10 or more....recursive?
     # Add flashed positions to a list so those positions can't be flashed agian
     # While any value in np_grid > 9 AND If np_grid position is NOT on don't check list...
     # Then flash and incrase surrounding for any value greater than 9.
     print("np_grid after flashes:\n",np_grid)
+
+    print("flashed lists step:",step,"\n", flashed_list,"\n")
     # finally set all octopuses with values greater than 9 to 0:
     for r, row in enumerate(np_grid):
         for d, digit in enumerate(row):
