@@ -33,7 +33,7 @@ print("np_grid before any steps:\n", np_grid)
 # GRID CREATED.
 
 # Set number of steps to execute:
-max_steps = 100
+max_steps = 1000
 step = 0
 flashes_count = 0
 while step < max_steps:
@@ -123,6 +123,13 @@ while step < max_steps:
             # if digit > 9:
             if digit < 0:
                 np_grid[r][d] = 0
+
+    # THIS CODE IS ALL THAT IS NEEDED FOR PART 2:
+    # NOW check if all elements in grid are zeroes or not:
+    all_zeros = not np.any(np_grid)
+    if all_zeros == True:
+        print("All digits are zero after step:", step)
+        exit()
 
 
 
