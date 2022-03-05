@@ -47,27 +47,28 @@ for node in nodes:
 # Now do Depth First Search of Graph:
 visited = [] # to keep track of visited nodes
 current_path = []
+
 def dfs(visited, graph, node, destination_node):
     # If end is reached, save current path and backtrack.....
         if node == destination_node:
             current_path.append(node)
             visited.append(node)
             print("current path is currently:", current_path)
-            return
-        else:
-            if node not in visited:
-                print("node being visited:", node)
-                # Don't add to visited if it's an upper case letter:
-                if not node.isupper():
-                    visited.append(node)
-                    # Add to 'current path no matter what'
-                current_path.append(node)
-                print("current path is currently:", current_path)
+            return(current_path)
 
-                for neighbour in graph[node]:
-                    if neighbour not in visted:
-                        dfs(visited, graph, neighbour, destination_node)
-                            
+        print("node being visited:", node)
+        # Don't add to visited if it's an upper case letter:
+        if not node.isupper():
+            visited.append(node)
+        # Add to 'current path no matter what'
+        current_path.append(node)
+        # print("current path is currently:", current_path)
+
+        for neighbour in graph[node]:
+            if neighbour not in visited:
+                dfs(visited, graph, neighbour, destination_node)
+
+        return(current_path)
 
 #Driver code for dfs function:
 print("Following is the Depth First Search")
