@@ -45,14 +45,31 @@ for node in nodes:
     print("graph_dict so far:", graph_dict)
 
 # Now do Depth First Search of Graph:
-visited = set() # to keep track of visited nodes
+visited = [] # to keep track of visited nodes
+current_path = []
+def dfs(visited, graph, node, destination_node):
+    # If end is reached, save current path and backtrack.....
+        if node == destination_node:
+            current_path.append(node)
+            visited.append(node)
+            print("current path is currently:", current_path)
+            return
+        else:
+            if node not in visited:
+                print("node being visited:", node)
+                # Don't add to visited if it's an upper case letter:
+                if not node.isupper():
+                    visited.append(node)
+                    # Add to 'current path no matter what'
+                current_path.append(node)
+                print("current path is currently:", current_path)
 
-def dfs(visited, graph, node):
-    if node not in visited:
-        print(node)
-        for neighbour in graph[node]:
-            dfs(visited, graph, neighbour)
+                for neighbour in graph[node]:
+                    if neighbour not in visted:
+                        dfs(visited, graph, neighbour, destination_node)
+                            
 
 #Driver code for dfs function:
 print("Following is the Depth First Search")
-dfs(visited, graph_dict, "start")
+dfs(visited, graph_dict, "start", "end")
+print("current path:", current_path)
