@@ -1,3 +1,7 @@
+import sys
+print(sys.version)
+print(sys.executable)
+
 filepath = "12_01_Test1_Data.txt"
 
 # using splitlines like this is good as it splits on the newline character
