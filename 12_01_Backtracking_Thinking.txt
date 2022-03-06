@@ -1,0 +1,18 @@
+Backtracking Thoughts:
+
+Once a path has reached 'END' following needs to happen:
+
+0. The path found needs to be 'counted' or saved.
+1. 'end' needs popped off the visit list and previous node reinitiated as the
+  new current node.
+2. As 'end' has already been used it's NOT allowed to be used immediately
+  so as not to duplicate found path - but can be visited thereafter for any new path.
+
+
+Once a path has reached a dead end leaf node (but NOT 'END') the following needs to happen:
+
+0. do not save or count the found path as it was a dead end.
+1. leaf node needs to be popped off the visit list and previous node reinitiated as new
+  current node.
+2. Leaf node should just be permenantly 'blocked' / left on the visit list as there's no point having any
+  more paths terminating there.
