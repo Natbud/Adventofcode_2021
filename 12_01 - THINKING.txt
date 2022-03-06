@@ -1,9 +1,0 @@
-start - has 2 options in total - A and b.
-
-b  - has 3 in total -  1 direct way of getting to end and the 2 of A's 6 ways that don't involve b (if you arrive at A from b you can't go back to b so there's one less option).
-
-A - has 7 ways of getting to end, unless it was arrived at from b, then it only has 2 (4 of A's ways involve b which can't be revisited)
-
-IF c wasn't attached to A:
-
-A would have only 3.   So attaching a lower case letter to a capital DOUBLES + 1 the pathways?
