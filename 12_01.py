@@ -68,9 +68,8 @@ def dfs(visited, graph, node, destination_node):
             if neighbour not in visited:
                 dfs(visited, graph, neighbour, destination_node)
 
-        return(current_path)
+                return(current_path)
 
 #Driver code for dfs function:
-print("Following is the Depth First Search")
 dfs(visited, graph_dict, "start", "end")
 print("current path:", current_path)
