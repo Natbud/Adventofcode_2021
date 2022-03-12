@@ -48,32 +48,43 @@ for node in nodes:
     graph_dict[node] = children
     print("graph_dict so far:", graph_dict)
 
-# Now do Depth First Search of Graph:
+# Now do Depth First Search and backtracking of Graph:
 visited = [] # to keep track of visited nodes
 current_path = []
 
 def dfs(visited, graph, node, destination_node):
-    # If end is reached, save current path and backtrack.....
+    # If end is reached, save current path and backtrack.....this is my 'BASE
+    # CASE'
         if node == destination_node:
             current_path.append(node)
-            visited.append(node)
+            # visited.append(node)
             print("current path is currently:", current_path)
-            return(current_path)
+            return 1
 
         print("node being visited:", node)
-        # Don't add to visited if it's an upper case letter:
+        # MARK NODE AS VISITED:
+
+        # Don't add to "visited" if it's an upper case letter:
         if not node.isupper():
             visited.append(node)
+            #visited = True
+        # Create a counter variable to count number of paths:
+        nb_paths = 0
         # Add to 'current path no matter what'
         current_path.append(node)
         # print("current path is currently:", current_path)
 
+        # Now visit all neighbours recursively
         for neighbour in graph[node]:
             if neighbour not in visited:
-                dfs(visited, graph, neighbour, destination_node)
+                nb_paths += (dfs(visited, graph, neighbour, destination_node))
 
-                return(current_path)
+        # Unmark NODE as visited at this point:
+        visited.pop(node)
+        print("nb_paths is:", nb_paths)
+        return(int(nb_paths))
+
 
 #Driver code for dfs function:
-dfs(visited, graph_dict, "start", "end")
+print(dfs(visited, graph_dict, "start", "end"))
 print("current path:", current_path)

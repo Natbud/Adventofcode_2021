@@ -27,7 +27,7 @@ def rec_permute(sofar, rest):
 rest = "meats"
 rec_permute("", rest)
 
-#PRINT RESULTS:
+# THIS PART ONLY PRINTS IF ITEMS ARE IN DICTIONARY - COMMENT OUT IF WISHED.:
 print("checking anagrams with dictionary.....")
 count = 1
 for i in set(anagrams):
@@ -35,5 +35,6 @@ for i in set(anagrams):
     if i in words.words():
         print(count, i)
     count +=1
+    
 print("number of anagrams including duplicates:", len(anagrams))
 print("number of anagrams without duplicates:", len(set(anagrams)))
