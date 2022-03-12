@@ -59,7 +59,7 @@ def dfs(visited, graph, node, destination_node):
             current_path.append(node)
             # visited.append(node)
             print("current path is currently:", current_path)
-            return 1
+            return(1)
 
         print("node being visited:", node)
         # MARK NODE AS VISITED:
@@ -79,10 +79,12 @@ def dfs(visited, graph, node, destination_node):
             if neighbour not in visited:
                 nb_paths += (dfs(visited, graph, neighbour, destination_node))
 
+
         # Unmark NODE as visited at this point:
-        visited.pop(node)
+        print("visited:", visited)
+        visited.pop()
         print("nb_paths is:", nb_paths)
-        return(int(nb_paths))
+        return(nb_paths)
 
 
 #Driver code for dfs function:
