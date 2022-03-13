@@ -3,7 +3,7 @@ import pprint
 print(sys.version)
 print(sys.executable)
 
-filepath = "12_01_Test1_Data.txt"
+filepath = "12_01_Data.txt"
 
 # using splitlines like this is good as it splits on the newline character
 # which essentially removes it from each line during reading.
@@ -14,7 +14,6 @@ with open(filepath) as f:
 
 # Define graph:
 graph_dict = {}
-
 # Add all 'nodes' to a Node list:
 nodes = []
 
@@ -24,9 +23,6 @@ for pair in file_list:
         nodes.append(partitioned_string[0])
     if partitioned_string[2] not in nodes:
         nodes.append(partitioned_string[2])
-
-# print("nodes:", nodes)
-
 
 # Find children of each node and add to a list:
 for node in nodes:
@@ -48,13 +44,12 @@ for node in nodes:
     # Now add the node and chlidren to an adjacency list dictionary:
     graph_dict[node] = children
     # print("graph_dict so far:", graph_dict)
-print("graph_dict:\n")
-pprint.pprint(graph_dict)
-print("\n\n")
+
+# print("graph_dict:\n")
+# pprint.pprint(graph_dict)
+# print("\n\n")
 
 # Now do Depth First Search using recursion:
-visited = [] # to keep track of visited nodes
-# path = []
 solutions = []
 
 def dfs(path: list[str], visited, graph, node, destination_node):
@@ -77,6 +72,6 @@ def dfs(path: list[str], visited, graph, node, destination_node):
 
 #Driver code for dfs function:
 dfs(['start'], set(), graph_dict, "start", "end")
-for solution in solutions:
-    print(solution)
-print("Number of Paths:", len(solutions))
+# for solution in solutions:
+#     print(solution)
+print("\n\nNumber of Paths:", len(solutions))
