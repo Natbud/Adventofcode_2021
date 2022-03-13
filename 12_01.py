@@ -49,7 +49,7 @@ for node in nodes:
     print("graph_dict so far:", graph_dict)
 
 # Now do Depth First Search and backtracking of Graph:
-visited = set() # to keep track of visited nodes
+visited = [] # to keep track of visited nodes
 current_path = []
 
 def dfs(visited, graph, node, destination_node):
@@ -66,7 +66,7 @@ def dfs(visited, graph, node, destination_node):
 
         # Don't add to "visited" if it's an upper case letter:
         if not node.isupper():
-            visited.add(node)
+            visited.append(node)
             #visited = True
         # Create a counter variable to count number of paths:
         nb_paths = 0
@@ -82,9 +82,11 @@ def dfs(visited, graph, node, destination_node):
 
         # Unmark NODE as visited at this point:
         print("visited:", visited)
-        visited.pop()
+        if not visited == []:
+            visited.pop()
         print("nb_paths is:", nb_paths)
         return(nb_paths)
+
 
 #Driver code for dfs function:
 print(dfs(visited, graph_dict, "start", "end"))
