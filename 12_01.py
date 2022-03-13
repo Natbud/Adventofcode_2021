@@ -82,8 +82,11 @@ def dfs(visited, graph, node, destination_node):
 
         # Unmark NODE as visited at this point:
         print("visited:", visited)
-        if not visited == "":
+        if not bool(visited):
             visited.pop()
+        else:
+            pass
+
         print("nb_paths is:", nb_paths)
         return(nb_paths)
 
